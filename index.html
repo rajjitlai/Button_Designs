@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Button Collection</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #0a0a0a;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            background: linear-gradient(to right, #38ff42, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #1a1a1a;
+            position: relative;
+            min-height: 180px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            border-color: #333;
+        }
+
+        .card-label {
+            position: absolute;
+            bottom: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #444;
+            font-weight: 600;
+        }
+
+        /* --- BUTTON 1: Pulse Gradient --- */
+        .btn-pulse {
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
+            border-radius: 20px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn-pulse:hover {
+            background-position: right center;
+            background-size: 200% auto;
+            animation: pulse512 1.5s infinite;
+        }
+
+        @keyframes pulse512 {
+            0% { box-shadow: 0 0 0 0 #05bada66; }
+            70% { box-shadow: 0 0 0 10px rgb(218 103 68 / 0%); }
+            100% { box-shadow: 0 0 0 0 rgb(218 103 68 / 0%); }
+        }
+
+        /* --- BUTTON 2: Space Explorer --- */
+        .btn-space {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 13rem;
+            overflow: hidden;
+            height: 3rem;
+            background-size: 300% 300%;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+            transition: 0.5s;
+            animation: gradient_301 5s ease infinite;
+            border: double 4px transparent;
+            background-image: linear-gradient(#212121, #212121), linear-gradient(137.48deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .btn-space strong {
+            z-index: 2;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #FFFFFF;
+            text-shadow: 0 0 4px white;
+        }
+
+        #container-stars {
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transition: 0.5s;
+            backdrop-filter: blur(1rem);
+            border-radius: 5rem;
+        }
+
+        #glow {
+            position: absolute;
+            display: flex;
+            width: 12rem;
+        }
+
+        .circle {
+            width: 100%;
+            height: 30px;
+            filter: blur(2rem);
+            animation: pulse_3011 4s infinite;
+            z-index: -1;
+        }
+
+        .circle:nth-of-type(1) { background: rgba(254, 83, 186, 0.636); }
+        .circle:nth-of-type(2) { background: rgba(142, 81, 234, 0.704); }
+
+        .btn-space:hover #container-stars { z-index: 1; background-color: #212121; }
+        .btn-space:hover { transform: scale(1.1); }
+        .btn-space:active { border: double 4px #FE53BB; }
+
+        #stars {
+            position: relative;
+            background: transparent;
+            width: 200rem;
+            height: 200rem;
+        }
+
+        #stars::after, #stars::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#ffffff 1px, transparent 1%);
+            background-size: 50px 50px;
+        }
+
+        #stars::after { top: -10rem; left: -100rem; animation: animStarRotate 90s linear infinite; }
+        #stars::before { top: 0; left: -50%; width: 170%; height: 500%; animation: animStar 60s linear infinite; opacity: 0.5; }
+
+        @keyframes animStar { from { transform: translateY(0); } to { transform: translateY(-135rem); } }
+        @keyframes animStarRotate { from { transform: rotate(360deg); } to { transform: rotate(0); } }
+        @keyframes gradient_301 { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes pulse_3011 { 0% { transform: scale(0.75); } 70% { transform: scale(1); } 100% { transform: scale(0.75); } }
+
+        /* --- BUTTON 3: RGB Border --- */
+        .btn-rgb-border {
+            --border-radius: 15px;
+            --border-width: 4px;
+            appearance: none;
+            position: relative;
+            padding: 1em 2em;
+            border: 0;
+            background-color: #212121;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .btn-rgb-border::after {
+            --m-i: linear-gradient(#000, #000);
+            --m-o: content-box, padding-box;
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: var(--border-width);
+            border-radius: var(--border-radius);
+            background-image: conic-gradient(#488cfb, #29dbbc, #ddf505, #ff9f0e, #e440bb, #655adc, #488cfb);
+            -webkit-mask-image: var(--m-i), var(--m-i);
+            mask-image: var(--m-i), var(--m-i);
+            -webkit-mask-origin: var(--m-o);
+            mask-origin: var(--m-o);
+            -webkit-mask-clip: var(--m-o);
+            mask-composite: exclude;
+            -webkit-mask-composite: destination-out;
+            animation: rotate-hue linear 500ms infinite;
+            animation-play-state: paused;
+        }
+
+        .btn-rgb-border:hover::after { animation-play-state: running; }
+        @keyframes rotate-hue { to { filter: hue-rotate(1turn); } }
+
+        /* --- BUTTON 4: Soft Glossy --- */
+        .btn-soft {
+            background-color: #c2fbd7;
+            border-radius: 100px;
+            box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px;
+            color: green;
+            cursor: pointer;
+            display: inline-block;
+            font-family: inherit;
+            padding: 10px 25px;
+            text-align: center;
+            transition: all 250ms;
+            border: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn-soft:hover {
+            box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        /* --- BUTTON 5: Glow Rainbow --- */
+        .btn-glow-rainbow {
+            padding: 0.8em 2.2em;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .btn-glow-rainbow:before {
+            content: "";
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px; left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .btn-glow-rainbow:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%; height: 100%;
+            background: #222;
+            left: 0; top: 0;
+            border-radius: 10px;
+        }
+
+        /* --- BUTTON 6: Coding Animation --- */
+        .btn-coding {
+            width: 200px;
+            background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+            text-align: center;
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            font-weight: normal;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn-coding:hover { animation: play 1.6s ease-in infinite; }
+
+        .btn-coding span {
+            padding: 12px 0;
+            font-size: 18px;
+            display: block;
+            margin: 3px;
+            background: #000;
+            border-radius: 3px;
+        }
+
+        @keyframes play {
+            0% { background-position: 0px; }
+            100% { background-position: -390px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Modern Button Collection</h1>
+        <p>Unified showcase of premium button designs</p>
+    </header>
+
+    <div class="container">
+        <!-- Pulse Gradient -->
+        <div class="card">
+            <button class="btn-pulse">Pulse Button</button>
+            <span class="card-label">Pulse Gradient</span>
+        </div>
+
+        <!-- Space Explorer -->
+        <div class="card">
+            <button class="btn-space" type="button">
+                <strong>SPACE</strong>
+                <div id="container-stars">
+                    <div id="stars"></div>
+                </div>
+                <div id="glow">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </button>
+            <span class="card-label">Space Explorer</span>
+        </div>
+
+        <!-- RGB Border -->
+        <div class="card">
+            <button class="btn-rgb-border">Hover Me</button>
+            <span class="card-label">RGB Border</span>
+        </div>
+
+        <!-- Soft Glossy -->
+        <div class="card">
+            <button class="btn-soft">Glossy Button</button>
+            <span class="card-label">Soft Glossy</span>
+        </div>
+
+        <!-- Glow Rainbow -->
+        <div class="card">
+            <button class="btn-glow-rainbow">Glow Button</button>
+            <span class="card-label">Rainbow Glow</span>
+        </div>
+
+        <!-- Coding Animation -->
+        <div class="card">
+            <a class="btn-coding">
+                <span>Start Coding</span>
+            </a>
+            <span class="card-label">Animated Gradient</span>
+        </div>
+    </div>
+</body>
+</html>
